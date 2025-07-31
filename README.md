@@ -6,6 +6,7 @@ This project implements a simple user authentication system in a Next.js applica
 
 The authentication backend is implemented as a Next.js **serverless API route** (`/api/login`) that validates credentials by calling an external API. User role data is saved in a Redux store and persisted across sessions using `localStorage`.
 
+Vercel Link: https://login-app-smoky-two.vercel.app/
 ---
 
 ## Features
