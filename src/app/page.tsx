@@ -21,44 +21,43 @@ export default function Home() {
 
   const handleLogout = () => {
     dispatch(logout());
-    router.push("/login");  // Redirect to login page after logout
+    router.push("/login");
   };
 
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-6 text-gray-900 dark:text-gray-100 font-sans">
+      <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-6 text-gray-900 dark:text-gray-100 font-sans transition-colors">
         {isAuthenticated ? (
-          <>
-            <h1 className="text-4xl font-bold mb-4">
-              Welcome back{role === "admin" ? ", Admin" : ""}!
+          <div className="flex flex-col items-center text-center space-y-6">
+            <h1 className="text-4xl sm:text-5xl font-bold">
+              Welcome back
+              {role === "admin" && <span className="text-primary">, Admin</span>}!
             </h1>
-            <p className="text-lg mb-6 max-w-md text-center">
-              You are logged in as <strong>{role}</strong>.
+            <p className="text-lg max-w-md">
+              You are logged in as <strong className="capitalize">{role}</strong>.
             </p>
-            <div className="flex gap-4">
-              <button
-                onClick={handleLogout}
-                className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition"
-              >
-                Logout
-              </button>
-            </div>
-          </>
+            <button
+              onClick={handleLogout}
+              className="px-6 py-3 bg-red-600 hover:bg-red-700 active:scale-95 transition text-white rounded-lg shadow-md"
+            >
+              Logout
+            </button>
+          </div>
         ) : (
-          <>
-            <h1 className="text-5xl font-extrabold mb-6">Welcome to Auth Login</h1>
-            <p className="text-lg mb-10 max-w-md text-center">
+          <div className="flex flex-col items-center text-center space-y-8">
+            <h1 className="text-5xl font-extrabold tracking-tight">Welcome to Auth Login</h1>
+            <p className="text-lg max-w-md">
               Access your account by logging in below.
             </p>
             <Link
               href="/login"
-              className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-lg font-semibold transition"
+              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white rounded-lg text-lg font-semibold shadow-md transition"
             >
               Go to Login
             </Link>
-          </>
+          </div>
         )}
       </main>
     </>
